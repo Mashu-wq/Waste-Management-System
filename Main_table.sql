@@ -18,7 +18,7 @@ CREATE TABLE DisposalSites (
 );
 
 CREATE TABLE Collections (
-    CollectionID NUMBER PRIMARY KEY AUTOINCREMENT,
+    CollectionID NUMBER PRIMARY KEY ,
     CollectionPointID NUMBER REFERENCES CollectionPoints(CollectionPointID),
     WasteTypeID NUMBER REFERENCES WasteTypes(WasteTypeID),
     QuantityKG NUMBER,
@@ -77,17 +77,17 @@ VALUES (6, 6, 6, 1000, TO_DATE('2024-04-05', 'YYYY-MM-DD'));
 
 >Record a disposal:
 INSERT INTO Disposals (DisposalID, DisposalSiteID, WasteTypeID, QuantityKG, DisposalDate)
-VALUES (1, 1, 1, 500, '2024-05-01');
+VALUES (1, 1, 1, 500, TO_DATE('2024-05-01', 'YYYY-MM-DD'));
 INSERT INTO Disposals (DisposalID, DisposalSiteID, WasteTypeID, QuantityKG, DisposalDate)
-VALUES (2, 2, 2, 500, '2024-05-02');
+VALUES (2, 2, 2, 500, TO_DATE('2024-05-02', 'YYYY-MM-DD'));
 INSERT INTO Disposals (DisposalID, DisposalSiteID, WasteTypeID, QuantityKG, DisposalDate)
-VALUES (3, 3, 3, 100, '2024-05-03');
+VALUES (3, 3, 3, 100, TO_DATE('2024-05-04', 'YYYY-MM-DD'));
 INSERT INTO Disposals (DisposalID, DisposalSiteID, WasteTypeID, QuantityKG, DisposalDate)
-VALUES (4, 4, 4, 5000, '2024-05-04');
+VALUES (4, 4, 4, 5000, TO_DATE('2024-05-05', 'YYYY-MM-DD'));
 INSERT INTO Disposals (DisposalID, DisposalSiteID, WasteTypeID, QuantityKG, DisposalDate)
-VALUES (5, 5, 5, 1000, '2024-05-05');
+VALUES (5, 5, 5, 1000, TO_DATE('2024-05-06', 'YYYY-MM-DD'));
 INSERT INTO Disposals (DisposalID, DisposalSiteID, WasteTypeID, QuantityKG, DisposalDate)
-VALUES (6, 6, 6, 400, '2024-05-01');
+VALUES (6, 6, 6, 400, TO_DATE('2024-05-01', 'YYYY-MM-DD'));
 
 
 
@@ -97,7 +97,7 @@ VALUES (6, 6, 6, 400, '2024-05-01');
 CREATE TABLE Employees (
     EmployeeID NUMBER PRIMARY KEY,
     Name VARCHAR2(255),
-    Role VARCHAR2(100), -- e.g., Driver, Manager
+    Role VARCHAR2(100), 
     ContactInfo VARCHAR2(255)
 );
 
@@ -105,7 +105,7 @@ CREATE TABLE Vehicles (
     VehicleID NUMBER PRIMARY KEY,
     LicensePlate VARCHAR2(50),
     Capacity NUMBER,
-    Type VARCHAR2(100) -- e.g., Truck, Van
+    Type VARCHAR2(100) 
 );
 
 CREATE TABLE Schedules (
@@ -114,7 +114,7 @@ CREATE TABLE Schedules (
     VehicleID NUMBER REFERENCES Vehicles(VehicleID),
     EmployeeID NUMBER REFERENCES Employees(EmployeeID),
     ScheduledDate DATE,
-    Status VARCHAR2(50) -- e.g., Scheduled, Completed, Cancelled
+    Status VARCHAR2(50) 
 );
 
 CREATE TABLE EnvironmentalImpacts (
