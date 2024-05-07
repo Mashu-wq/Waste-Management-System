@@ -1,22 +1,22 @@
-
+-- wasteTypes table
 CREATE TABLE WasteTypes (
     WasteTypeID NUMBER PRIMARY KEY,
     Description VARCHAR2(100)
 );
-
+-- CollectionPoints table
 CREATE TABLE CollectionPoints (
     CollectionPointID NUMBER PRIMARY KEY,
     Location VARCHAR2(255),
     Capacity NUMBER
 );
-
+-- DisposalSites table
 CREATE TABLE DisposalSites (
     DisposalSiteID NUMBER PRIMARY KEY,
     Name VARCHAR2(255),
     Type VARCHAR2(100),
     Capacity NUMBER
 );
-
+-- Collections table
 CREATE TABLE Collections (
     CollectionID NUMBER PRIMARY KEY ,
     CollectionPointID NUMBER REFERENCES CollectionPoints(CollectionPointID),
@@ -24,6 +24,7 @@ CREATE TABLE Collections (
     QuantityKG NUMBER,
     CollectionDate DATE
 );
+--Disposals Table
 
 CREATE TABLE Disposals (
     DisposalID NUMBER PRIMARY KEY,
@@ -92,8 +93,7 @@ VALUES (6, 6, 6, 400, TO_DATE('2024-05-01', 'YYYY-MM-DD'));
 
 
 
-
-
+-- Employee table
 CREATE TABLE Employees (
     EmployeeID NUMBER PRIMARY KEY,
     Name VARCHAR2(255),
@@ -101,6 +101,7 @@ CREATE TABLE Employees (
     ContactInfo VARCHAR2(255)
 );
 
+-- Vehicles table
 CREATE TABLE Vehicles (
     VehicleID NUMBER PRIMARY KEY,
     LicensePlate VARCHAR2(50),
@@ -108,6 +109,7 @@ CREATE TABLE Vehicles (
     Type VARCHAR2(100) 
 );
 
+-- Schedules table
 CREATE TABLE Schedules (
     ScheduleID NUMBER PRIMARY KEY,
     CollectionPointID NUMBER REFERENCES CollectionPoints(CollectionPointID),
@@ -116,7 +118,7 @@ CREATE TABLE Schedules (
     ScheduledDate DATE,
     Status VARCHAR2(50) 
 );
-
+-- EnvironmentalImpacts table
 CREATE TABLE EnvironmentalImpacts (
     RecordID NUMBER PRIMARY KEY,
     DisposalID NUMBER REFERENCES Disposals(DisposalID),
